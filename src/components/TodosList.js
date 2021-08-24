@@ -9,7 +9,13 @@ class TodosList extends React.Component {
   }
 
   render() {
-    const { todos, handleChangeProps, deleteTodoProps } = this.props;
+    const {
+      todos,
+      handleChangeProps,
+      deleteTodoProps,
+      setUpdate,
+    } = this.props;
+
     return (
       <ul>
         {todos.map((todo) => (
@@ -18,6 +24,7 @@ class TodosList extends React.Component {
             todo={todo}
             handleChangeProps={handleChangeProps}
             deleteTodoProps={deleteTodoProps}
+            setUpdate={setUpdate}
           />
         ))}
       </ul>
@@ -29,12 +36,14 @@ TodosList.defaultProps = {
   todos: [],
   handleChangeProps: () => {},
   deleteTodoProps: () => {},
+  setUpdate: () => {},
 };
 
 TodosList.propTypes = {
   todos: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
   handleChangeProps: PropTypes.func,
   deleteTodoProps: PropTypes.func,
+  setUpdate: PropTypes.func,
 };
 
 export default TodosList;
